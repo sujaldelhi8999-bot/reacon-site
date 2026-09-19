@@ -130,6 +130,14 @@
     min-height: 720px;
   }
 
+  /* ============================================================
+     SLOWER, GENTLER ENTRANCE ANIMATIONS
+     - Duration raised 1000ms → 2000ms
+     - Easing softened (gentle deceleration)
+     - Initial offset reduced 22px → 12px (less jarring travel)
+     - Staggered delays give each element its own beat
+     ============================================================ */
+
   .hero h1 {
     font-family: var(--tight);
     font-weight: 700;
@@ -140,7 +148,7 @@
     position: relative;
     z-index: 3;
     max-width: 14ch;
-    animation: rise 1000ms 0.15s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation: rise 2000ms 0.2s cubic-bezier(0.22, 1, 0.36, 1) both;
   }
   .hero h1 .fade {
     background: linear-gradient(90deg, #b8b3c8 0%, #8f8aa3 55%, #6b6780 100%);
@@ -165,16 +173,16 @@
     line-height: 1.7;
     color: var(--gray);
     z-index: 4;
-    animation: rise 1000ms 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation: rise 2000ms 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
   }
   .hero-sub strong { color: var(--ink-2); font-weight: 500; }
 
   @keyframes rise {
-    from { opacity: 0; transform: translateY(22px); }
+    from { opacity: 0; transform: translateY(12px); }
     to   { opacity: 1; transform: translateY(0); }
   }
 
-  /* ── 3D AI FIGURE (bust, matches reference) ── */
+  /* ── 3D AI FIGURE (bust) ── */
   .ai-figure {
     position: absolute;
     left: 50%;
@@ -395,7 +403,7 @@
   }
   .kv p { font-size: 14.5px; line-height: 1.7; color: var(--gray); }
 
-  /* Dashboard mockup (matches reference) */
+  /* Dashboard mockup */
   .mockup {
     border-radius: 24px;
     background: linear-gradient(160deg, #f3eefe 0%, #e6ddfb 100%);
@@ -425,9 +433,7 @@
   }
   .mockup .tabs .on { color: var(--purple); font-weight: 600; }
 
-  .mockup .body {
-    padding: 22px 20px 24px;
-  }
+  .mockup .body { padding: 22px 20px 24px; }
   .mockup .row {
     display: flex;
     align-items: baseline;
@@ -777,10 +783,15 @@
   .foot-bottom .links { display: flex; gap: 24px; flex-wrap: wrap; }
   .foot-bottom a:hover { color: var(--purple); }
 
+  /* ============================================================
+     SCROLL REVEAL — also slowed down to match the hero
+     ============================================================ */
   .reveal {
     opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 900ms cubic-bezier(0.16, 1, 0.3, 1), transform 900ms cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(14px);
+    transition:
+      opacity 1600ms cubic-bezier(0.22, 1, 0.36, 1),
+      transform 1600ms cubic-bezier(0.22, 1, 0.36, 1);
   }
   .reveal.in { opacity: 1; transform: translateY(0); }
 
@@ -865,37 +876,30 @@
           </linearGradient>
         </defs>
 
-        <!-- Soft glow -->
         <ellipse cx="220" cy="280" rx="220" ry="260" fill="url(#figGlow)"/>
 
-        <!-- Shoulders / bust -->
         <path d="M 30 620
                  C 42 510 95 450 165 432
                  C 185 427 205 425 220 425
                  C 235 425 255 427 275 432
                  C 345 450 398 510 410 620 Z"
               fill="url(#figShoulders)"/>
-        <!-- Shoulder highlight -->
         <path d="M 60 620
                  C 78 530 118 480 175 460
                  C 155 480 130 530 122 620 Z"
               fill="#a78bfa" opacity="0.22"/>
-        <!-- Shoulder rim light -->
         <path d="M 295 440
                  C 355 465 395 520 405 620"
               stroke="url(#figRim)" stroke-width="3" fill="none" stroke-linecap="round"/>
 
-        <!-- Neck -->
         <path d="M 178 355
                  L 185 428
                  Q 220 442 255 428
                  L 262 355 Z"
               fill="url(#figNeck)"/>
-        <!-- Neck shadow -->
         <path d="M 220 372 L 220 434 L 262 428 L 262 355 Z"
               fill="#2e1065" opacity="0.5"/>
 
-        <!-- Head -->
         <path d="M 220 55
                  C 300 55 348 110 348 185
                  C 348 245 328 295 298 328
@@ -905,10 +909,8 @@
                  C 92 110 140 55 220 55 Z"
               fill="url(#figBody)"/>
 
-        <!-- Face highlight (upper-left) -->
         <ellipse cx="180" cy="180" rx="66" ry="94" fill="url(#figHighlight)"/>
 
-        <!-- Right-side shadow (3D form) -->
         <path d="M 220 55
                  C 300 55 348 110 348 185
                  C 348 245 328 295 298 328
@@ -916,25 +918,20 @@
                  L 220 55 Z"
               fill="#1e1b4b" opacity="0.32"/>
 
-        <!-- Eye sockets -->
         <path d="M 138 205 Q 162 186 188 200 Q 176 217 148 222 Q 136 218 138 205 Z"
               fill="#1e1b4b" opacity="0.45"/>
         <path d="M 252 200 Q 278 186 302 205 Q 304 218 292 222 Q 264 217 252 200 Z"
               fill="#0f0729" opacity="0.6"/>
 
-        <!-- Nose ridge -->
         <path d="M 220 155 Q 214 225 220 265"
               stroke="#e0e7ff" stroke-opacity="0.35" stroke-width="1.4" fill="none"/>
 
-        <!-- Chin line -->
         <path d="M 200 300 Q 220 306 240 300"
               stroke="#1e1b4b" stroke-opacity="0.5" stroke-width="1.5" fill="none"/>
 
-        <!-- Forehead highlight (contour) -->
         <path d="M 158 82 Q 220 58 282 82"
               stroke="#e0e7ff" stroke-opacity="0.6" stroke-width="2" fill="none" stroke-linecap="round"/>
 
-        <!-- Side contour (jaw) -->
         <path d="M 92 185 Q 96 265 152 328"
               stroke="#c4b5fd" stroke-opacity="0.35" stroke-width="1.5" fill="none"/>
       </svg>
@@ -1300,7 +1297,7 @@
     else { running = true; requestAnimationFrame(tick); }
   });
 })();
-  
+
 /* ══ Scroll reveal ══ */
 (function () {
   const els = document.querySelectorAll(".reveal");
