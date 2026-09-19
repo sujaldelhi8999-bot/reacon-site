@@ -51,7 +51,6 @@
   ::selection { background: var(--purple-3); color: #fff; }
   a { color: inherit; text-decoration: none; }
 
-  /* Cursor trail — soft + relaxed */
   #trail {
     position: fixed; inset: 0;
     width: 100%; height: 100%;
@@ -129,14 +128,6 @@
     position: relative;
     min-height: 720px;
   }
-
-  /* ============================================================
-     SLOWER, GENTLER ENTRANCE ANIMATIONS
-     - Duration raised 1000ms → 2000ms
-     - Easing softened (gentle deceleration)
-     - Initial offset reduced 22px → 12px (less jarring travel)
-     - Staggered delays give each element its own beat
-     ============================================================ */
 
   .hero h1 {
     font-family: var(--tight);
@@ -783,9 +774,6 @@
   .foot-bottom .links { display: flex; gap: 24px; flex-wrap: wrap; }
   .foot-bottom a:hover { color: var(--purple); }
 
-  /* ============================================================
-     SCROLL REVEAL — also slowed down to match the hero
-     ============================================================ */
   .reveal {
     opacity: 0;
     transform: translateY(14px);
@@ -1027,10 +1015,6 @@
         <div class="frame">
           <div class="tabs">
             <span class="on">Board</span>
-            <span>Threat Intel</span>
-            <span>AI Analytics</span>
-            <span>Network Security</span>
-            <span>Settings</span>
           </div>
           <div class="body">
             <div class="row">
